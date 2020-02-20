@@ -1,0 +1,7 @@
+(function() {
+  const $commentsContainer = document.querySelector('.comments')
+  $commentsContainer.appendChild(stringToDom("<%= j render @comment %>"))
+
+  const $newCommentForm = document.getElementById('add_comment_form')
+  $newCommentForm.innerHTML = ''
+})()
