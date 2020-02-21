@@ -15,6 +15,10 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     driven_by :rack_test
   end
 
+  def js?
+    self.class.js?
+  end
+
   def confirm
     self.class.js? ? accept_confirm { yield } : yield
   end

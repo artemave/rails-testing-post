@@ -14,7 +14,15 @@
  *= require_self
  */
 
+.comments {
+  margin-top: 10px;
+}
+
 .comment-metadata {
   font-size: small;
   color: grey;
+}
+
+.comment .comments {
+  margin-left: 20px;
 }

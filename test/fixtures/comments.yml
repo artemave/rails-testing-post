@@ -2,8 +2,8 @@
 
 one:
   body: Stuff
-  post: one
+  commentable: one (Post)
 
 two:
   body: More stuff
-  post: one
+  commentable: one (Post)

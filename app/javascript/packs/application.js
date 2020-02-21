@@ -16,11 +16,6 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-window.stringToDom = function(html) {
-  const $tmpContainer = document.createElement('div')
-  $tmpContainer.innerHTML = html
-
-  return $tmpContainer.children.length > 1
-    ? $tmpContainer.children
-    : $tmpContainer.children[0]
+window.htmlToNode = function(html) {
+  return document.createRange().createContextualFragment(html)
 }
