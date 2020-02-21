@@ -1,4 +1,4 @@
 (function() {
-  const $newCommentForm = document.getElementById('add_comment_form')
-  $newCommentForm.innerHTML = "<%= j render 'form', comment: @comment %>"
+  const $replyFormContainer = document.querySelector("<%= params[:target] %>")
+  $replyFormContainer.innerHTML = "<%= j render 'form', comment: @comment, local: false %>"
 })()

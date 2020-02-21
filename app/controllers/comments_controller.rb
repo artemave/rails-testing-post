@@ -1,19 +1,14 @@
 class CommentsController < ApplicationController
-  before_action :set_post
+  before_action :set_commentable
 
   # GET /comments/new
   def new
-    @comment = Comment.new
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    @comment = @commentable.comments.new
   end
 
   # POST /comments
   def create
-    @comment = @post.comments.build(comment_params)
+    @comment = @commentable.comments.build(comment_params)
 
     respond_to do |format|
       if @comment.save
@@ -28,8 +23,13 @@ class CommentsController < ApplicationController
 
   private
 
-  def set_post
-    @post = Post.find(params[:post_id])
+  def set_commentable
+    @commentable ||= begin
+                       commentable_class = [Comment, Post].find do |k|
+                         params["#{k.name.underscore}_id"]
+                       end
+                       commentable_class.find(params["#{commentable_class.name.underscore}_id"])
+                     end
   end
 
   # Only allow a list of trusted parameters through.

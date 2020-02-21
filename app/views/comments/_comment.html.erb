@@ -1,8 +1,14 @@
-<div class="comment">
+<div class="comment" id="<%= dom_id(comment) %>">
   <div class="comment-body">
     <%= comment.body %>
   </div>
+
   <div class="comment-metadata">
-    <%= comment.created_at %>
+    <%= comment.created_at %> | <%= link_to 'Reply', new_comment_comment_path(comment, target: "##{dom_id(comment)} .comment-reply-form"), remote: true %>
+  </div>
+  <div class="comment-reply-form"></div>
+
+  <div class="comments">
+    <%= render comment.comments %>
   </div>
 </div>
