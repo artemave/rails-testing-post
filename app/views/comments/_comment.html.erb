@@ -1,12 +1,13 @@
-<div class="comment" id="<%= dom_id(comment) %>">
+<div class="comment" data-controller="reply">
   <div class="comment-body">
     <%= comment.body %>
   </div>
 
   <div class="comment-metadata">
-    <%= comment.created_at %> | <%= link_to 'Reply', new_comment_comment_path(comment, target: "##{dom_id(comment)} .comment-reply-form"), remote: true %>
+    <%= comment.created_at %> |
+    <%= link_to 'Reply', new_comment_comment_path(comment), remote: true, data: { action: 'ajax:success->reply#onNewForm' } %>
   </div>
-  <div class="comment-reply-form"></div>
+  <div data-target="reply.form"></div>
 
   <div class="comments">
     <%= render comment.comments %>

@@ -1,4 +1,1 @@
-(function() {
-  const $replyFormContainer = document.querySelector("<%= params[:target] %>")
-  $replyFormContainer.innerHTML = "<%= j render 'form', comment: @comment, local: false %>"
-})()
+"<%= j render 'form', comment: @comment, local: false %>"
