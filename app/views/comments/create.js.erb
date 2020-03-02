@@ -1,4 +1,1 @@
-(function() {
-  const $parentComment = document.getElementById('<%= dom_id(@comment.commentable) %>')
-  $parentComment.innerHTML = "<%= j render @comment.commentable %>"
-})()
+"<%= j render @comment.commentable %>"

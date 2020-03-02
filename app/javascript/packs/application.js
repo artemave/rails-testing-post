@@ -16,6 +16,4 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-window.htmlToNode = function(html) {
-  return document.createRange().createContextualFragment(html)
-}
+import "controllers"

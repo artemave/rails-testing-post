@@ -21,19 +21,14 @@ class CommentsTest < ApplicationSystemTestCase
 
   test 'replying to a comment' do
     post = posts(:one)
-    comment = post.comments.first
 
     visit post_url(post)
 
-    within "#comment_#{comment.id}" do
-      click_link 'Reply'
-    end
+    click_link 'Reply', match: :first
     fill_in 'Body', with: 'Bananas'
     click_on 'Create Comment'
 
     assert_text 'Comment was successfully created' unless js?
-    within "#comment_#{comment.id}" do
-      assert_text 'Bananas'
-    end
+    assert_text 'Bananas'
   end
 end

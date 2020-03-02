@@ -1,4 +1,1 @@
-(function() {
-  const $replyFormContainer = document.querySelector("#<%= dom_id(@comment.commentable) %> .comment-reply-form")
-  $replyFormContainer.innerHTML = "<%= j render 'form', comment: @comment, local: false %>"
-})()
+"<%= j render 'form', comment: @comment, local: false %>"
