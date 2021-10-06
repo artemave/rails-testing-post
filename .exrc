@@ -1,9 +1,15 @@
-let g:vigun_extra_keywords = ['test']
+let g:vjs_tags_enabled = 0
 
-let g:vigun_commands = [
+fun! s:watch(cmd)
+  return "rg --files | entr -r -c sh -c 'echo ".escape('"'.a:cmd.'"', '"')." && ".a:cmd."'"
+endf
+
+let g:vigun_mappings = [
       \ {
       \   'pattern': 'test/.*_test.rb$',
-      \   'normal': 'rails test',
-      \   'debug': 'BACKTRACE=1 rails test',
+      \   'all': 'rails test #{file}',
+      \   'nearest': 'rails test #{file}:#{line}',
+      \   'watch-all': s:watch('rails test #{file}'),
+      \   'watch-nearest': s:watch('rails test #{file}:#{line}'),
       \ }
       \]
