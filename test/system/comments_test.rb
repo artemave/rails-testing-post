@@ -15,7 +15,7 @@ class CommentsTest < ApplicationSystemTestCase
     fill_in 'Body', with: 'Bananas'
     click_on 'Create Comment'
 
-    assert_text 'Comment was successfully created'
+    assert_text 'Comment was successfully created' unless js?
     assert_text 'Bananas'
   end
 

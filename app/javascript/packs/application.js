@@ -3,8 +3,9 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+// ujs is still used for things like data-confirm
 require("@rails/ujs").start()
-require("turbolinks").start()
+import "@hotwired/turbo-rails"
 // require("@rails/activestorage").start()
 // require("channels")
 
@@ -15,5 +16,3 @@ require("turbolinks").start()
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
-import "controllers"

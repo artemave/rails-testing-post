@@ -1,15 +1,16 @@
-<div class="comment" data-controller="reply">
+<%= tag.div id: dom_id(comment), class: 'comment' do %>
   <div class="comment-body">
     <%= comment.body %>
   </div>
 
   <div class="comment-metadata">
     <%= comment.created_at %> |
-    <%= link_to 'Reply', new_comment_comment_path(comment), remote: true, data: { action: 'ajax:success->reply#onNewForm' } %>
+    <%= turbo_frame_tag "new_#{dom_id(comment)}_comment" do %>
+      <%= link_to 'Reply', new_comment_comment_path(comment) %>
+    <% end %>
   </div>
-  <div data-target="reply.form"></div>
 
   <div class="comments">
     <%= render comment.comments %>
   </div>
-</div>
+<% end %>

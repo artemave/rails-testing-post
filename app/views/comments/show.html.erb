@@ -1,14 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Body:</strong>
-  <%= @comment.body %>
-</p>
+<%= render @comment %>
 
-<p>
-  <strong>Belongs to:</strong>
-  <%= @comment.belongs_to %>
-</p>
-
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<%= link_to 'Back', @comment.post %>

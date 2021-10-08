@@ -1,6 +1,4 @@
-<% stimulus_form_action = 'ajax:success->reply#onCommentSuccess ajax:error->reply#onNewForm' %>
-
-<%= form_with(model: [comment.commentable, comment], local: local, html: { data: { action: stimulus_form_action } }) do |form| %>
+<%= form_with(model: [comment.commentable, comment]) do |form| %>
   <% if comment.errors.any? %>
     <div class="error_explanation">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>

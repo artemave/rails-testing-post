@@ -1,5 +1,8 @@
 <h1>New Comment</h1>
 
-<%= render 'form', comment: @comment, local: true %>
+<% frame_id = "new_#{dom_id(@commentable)}_comment" %>
 
-<%= link_to 'Back', @post %>
+<%= turbo_frame_tag frame_id do %>
+  <%= render 'form', comment: @comment %>
+  <%= link_to 'Back', :back, 'data-turbo-frame': frame_id %>
+<% end %>

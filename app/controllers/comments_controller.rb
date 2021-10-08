@@ -1,6 +1,10 @@
 class CommentsController < ApplicationController
   before_action :set_commentable
 
+  def show
+    @comment = @commentable.comments.find(params[:id])
+  end
+
   # GET /comments/new
   def new
     @comment = @commentable.comments.new
@@ -12,11 +16,10 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment.post, notice: 'Comment was successfully created.' }
-        format.js
+        format.html { redirect_to [@commentable, @comment], notice: 'Comment was successfully created.' }
+        format.turbo_stream
       else
-        format.html { render :new }
-        format.js { render :new }
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
@@ -24,12 +27,10 @@ class CommentsController < ApplicationController
   private
 
   def set_commentable
-    @commentable ||= begin
-                       commentable_class = [Comment, Post].find do |k|
-                         params["#{k.name.underscore}_id"]
-                       end
-                       commentable_class.find(params["#{commentable_class.name.underscore}_id"])
-                     end
+    commentable_class = [Comment, Post].find do |k|
+      params["#{k.name.underscore}_id"]
+    end
+    @commentable = commentable_class.find(params["#{commentable_class.name.underscore}_id"])
   end
 
   # Only allow a list of trusted parameters through.

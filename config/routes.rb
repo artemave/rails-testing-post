@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :posts do
-    resources :comments, only: %i[new create]
+  concern :commentable do
+    resources :comments, only: %i[show new create]
   end
-  resources :comments, only: [] do
-    resources :comments, only: %i[new create]
-  end
+
+  resources :posts, concerns: :commentable
+  resources :comments, only: [], concerns: :commentable
+
   root to: redirect('/posts')
 end

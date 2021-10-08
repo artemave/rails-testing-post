@@ -1,0 +1,22 @@
+<%= tag.div id: dom_id(post) do %>
+  <p>
+    <strong>Title:</strong>
+    <%= post.title %>
+  </p>
+
+  <p>
+    <strong>Body:</strong>
+    <%= post.body %>
+  </p>
+
+  <%= link_to 'Edit', edit_post_path(post) %> |
+  <%= link_to 'Back', posts_path %> |
+
+  <%= turbo_frame_tag "new_#{dom_id(post)}_comment" do %>
+    <%= link_to 'Add Comment', new_post_comment_path(post) %>
+  <% end %>
+
+  <h3>Comments</h3>
+
+  <%= render post.comments %>
+<% end %>
