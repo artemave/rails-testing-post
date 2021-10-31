@@ -1,24 +1,21 @@
-# README
+# Demo app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
 
-Things you may want to cover:
+Run site:
 
-* Ruby version
+    bundle install
+    rails webpacker:compile
+    rails db:prepare
+    rails s
 
-* System dependencies
+Run tests:
 
-* Configuration
+    # rack-test
+    rails test:system
 
-* Database creation
+    # js
+    JS=1 rails test:system
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    # gui
+    GUI=1 rails test:system

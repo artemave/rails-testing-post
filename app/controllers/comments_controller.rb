@@ -11,18 +11,18 @@ class CommentsController < ApplicationController
   end
 
   # POST /comments
-  def create
-    @comment = @commentable.comments.build(comment_params)
+def create
+  @comment = @commentable.comments.build(comment_params)
 
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to [@commentable, @comment], notice: 'Comment was successfully created.' }
-        format.turbo_stream
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+  respond_to do |format|
+    if @comment.save
+      format.html { redirect_to [@commentable, @comment], notice: 'Comment was successfully created.' }
+      format.turbo_stream
+    else
+      format.html { render :new, status: :unprocessable_entity }
     end
   end
+end
 
   private
 
