@@ -235,6 +235,7 @@ DEPENDENCIES
   capybara
   jbuilder
   listen
+  nokogiri
   pg
   puma
   rails (~> 7.0)
