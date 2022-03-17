@@ -1,4 +1,4 @@
-FROM ruby:3
+FROM ruby:2.7.5
 
 WORKDIR /app
 
@@ -8,6 +8,8 @@ ADD Gemfile* /app/
 RUN bundle install
 
 ADD . /app/
+
+RUN bundle exec rails webpacker:compile
 
 ENV PORT=3000
 
