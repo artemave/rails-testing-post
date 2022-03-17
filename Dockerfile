@@ -17,6 +17,4 @@ RUN yarn install
 
 ADD . /app/
 
-RUN bundle exec rails webpacker:compile
-
 CMD bundle exec rails server
