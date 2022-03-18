@@ -2,7 +2,7 @@
   "name": "My Rails app",
   "scripts": {
     "dokku": {
-      "predeploy": "bundle exec rails webpacker:compile",
+      "predeploy": "bundle exec rails assets:precompile",
       "postdeploy": "bundle exec rails db:migrate"
     }
   }
